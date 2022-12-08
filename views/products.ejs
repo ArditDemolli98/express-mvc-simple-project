@@ -1,0 +1,20 @@
+<html>
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <div class="container">
+    <%- include("./partials/navbar.ejs") %>
+    <p>Our products:</p>
+    <ol>
+      <% produktet.forEach(product=>{ %>
+          <h2><%= product.name %></h2>
+          <h3><%= product.model %></h3>
+      <%}) %>
+    </ol>
+    <%- include("./partials/buttons.ejs") %>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

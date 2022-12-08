@@ -1,0 +1,19 @@
+<html>
+
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <div class="container">
+
+      <%- include("./partials/navbar.ejs") %>
+
+      <p>Join our Newsletter!</p>
+      <form method="post">
+        <input type="email" name="email" id="email" placeholder="Email" />
+        <input type="submit" value="Join now!" id="subscribe" />
+      </form>
+      <%- include("./partials/buttons.ejs") %>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

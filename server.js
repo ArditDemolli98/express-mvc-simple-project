@@ -1,24 +1,24 @@
 const express = require("express");
 const app = express();
-const contactController = require("./controllers/contactController");
-const homeController = require("./controllers/homeController");
-const newsletterController = require("./controllers/newsletterController");
-const productsController = require("./controllers/productsController");
-const errorController = require("./controllers/errorController");
+const contactRoutes = require("./routes/contactRoutes");
+const homeRoutes = require("./routes/homeRoutes");
+const newsletterRoutes = require("./routes/newsletterRoutes");
+const productsRoutes = require("./routes/productsRoutes");
 const PORT = 8000;
 
 app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-app.get("/", homeController.getHomeView);
-app.get("/contact", contactController.getContactView);
-app.get("/newsletter", newsletterController.getNewsletterView);
-// app.get('/products', productsController.getProductsView)
-app.use("/products", productsController);
+app.use("/", homeRoutes);
+app.use("/products", productsRoutes);
+app.use("/newsletter", newsletterRoutes);
+app.use("/contact", contactRoutes);
 
-app.use(errorController.getErrorView);
+app.use((req, res) => {
+  res.render("404", { title: "404" });
+});
 
 app.listen(PORT, () => {
-  console.log(`Server is running one port: ${PORT}`);
+  console.log(`Server is running on port: ${PORT}`);
 });

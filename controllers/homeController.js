@@ -1,6 +1,5 @@
-const path = require('path');
-
-exports.getHomeView = (request,response) => {
-    response.sendFile(path.join(__dirname, "../views/home.html"));
-}
-
+module.exports = {
+  getHomeView: (req, res) => {
+    res.render("home", { title: "Home" });
+  },
+};
