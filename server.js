@@ -9,6 +9,8 @@ const PORT = 8000;
 
 app.use(express.static("public"));
 
+app.set("view engine", "ejs");
+
 app.get("/", homeController.getHomeView);
 app.get("/contact", contactController.getContactView);
 app.get("/newsletter", newsletterController.getNewsletterView);

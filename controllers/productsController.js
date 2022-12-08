@@ -1,14 +1,20 @@
 const express = require("express");
-const path = require('path');
+const path = require("path");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/products.html"));
-})
+function authenticate(req, res, next) {
+  console.log("authenticated");
+  next();
+}
 
-router.get("/:id", (req, res) => {
-    const id = req.params.id;
-    res.send(`Product with id ${id}`);
-})
+router.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../views/products.html"));
+  console.log(res);
+});
+
+router.get("/:id", authenticate, (req, res) => {
+  const id = req.params.id;
+  res.send(`Product with id ${id}`);
+});
 
 module.exports = router;
