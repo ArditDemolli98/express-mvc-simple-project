@@ -4,10 +4,12 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", productsController.getProductsView);
-router.get(
-  "/:id",
-  authentication.authenticate,
-  productsController.getProductById
-);
+router.get("/createProduct", productsController.getCreateView);
+router.post("/", productsController.createProduct);
+// router.get(
+//   "/:id",
+//   authentication.authenticate,
+//   productsController.getProductById
+// );
 
 module.exports = router;

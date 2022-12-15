@@ -1,0 +1,26 @@
+<html>
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <div class="container">
+    <%- include("./partials/navbar.ejs") %>
+
+    <form action="/products" method="POST">
+        <input type="text" name="name" id="name" placeholder="Product name here...">
+        <br>
+        <input type="text" name="model" id="model" placeholder="Model here...">
+        <br>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <br>
+        <input type="text" name="price" id="price" placeholder="eg. 100$">
+        <br>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <%- include("./partials/buttons.ejs") %>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

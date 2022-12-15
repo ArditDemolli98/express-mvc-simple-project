@@ -5,13 +5,18 @@
 <body>
   <div class="container">
     <%- include("./partials/navbar.ejs") %>
+
+    <a href="/products/createProduct">Add a new Product</a>
     <p>Our products:</p>
     <ol>
-      <% produktet.forEach(product=>{ %>
+      <% products.forEach(product=>{ %>
           <h2><%= product.name %></h2>
-          <h3><%= product.model %></h3>
+          <h4><%= product.model %></h4>
+          <hr>
+          <br>
       <%}) %>
     </ol>
+
     <%- include("./partials/buttons.ejs") %>
   </div>
   <script src="js/main.js"></script>

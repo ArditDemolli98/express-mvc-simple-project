@@ -1,14 +1,24 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 const contactRoutes = require("./routes/contactRoutes");
 const homeRoutes = require("./routes/homeRoutes");
 const newsletterRoutes = require("./routes/newsletterRoutes");
 const productsRoutes = require("./routes/productsRoutes");
 const PORT = 8000;
 
-app.use(express.static("public"));
+const dbURI = "mongodb+srv://arditi:arditi123@cluster0.mbci6a4.mongodb.net/?retryWrites=true&w=majority";
 
+mongoose.connect(dbURI)
+  .then(result => app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
+  }))
+  .catch(err => console.log(err))
+
+
+app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.use(express.urlencoded({extended: true}));
 
 app.use("/", homeRoutes);
 app.use("/products", productsRoutes);
@@ -19,6 +29,3 @@ app.use((req, res) => {
   res.render("404", { title: "404" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-});

@@ -1,11 +1,27 @@
-const Products = require("../models/products");
+const Product = require("../models/Products");
 
 module.exports = {
   getProductsView: (req, res) => {
-    res.render("products", { title: "Products", produktet: Products.products });
+    Product.find.sort({createdAt: -1})
+      .then(result =>{
+        res.render("products", { title: "Products", products: result });
+      })
+      .catch(err=> console.log(err));
   },
-  getProductById: (req, res) => {
-    const id = req.params.id;
-    res.send(`Product with id ${id}`);
+  getCreateView : (req, res) =>{
+    res.render("createProduct", {title: "Create product"})
   },
+  createProduct: (req, res) =>{
+    const product = new Product(req.body);
+    product.save()
+      .then(result=>{
+        res.redirect("/products")
+      })
+      .catch(err => console.log(err));
+  }
+
+  // getProductById: (req, res) => {
+  //   const id = req.params.id;
+  //   res.send(`Product with id ${id}`);
+  // },
 };
