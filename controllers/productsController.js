@@ -2,7 +2,7 @@ const Product = require("../models/Products");
 
 module.exports = {
   getProductsView: (req, res) => {
-    Product.find.sort({createdAt: -1})
+    Product.find().sort({createdAt: -1})
       .then(result =>{
         res.render("products", { title: "Products", products: result });
       })
@@ -18,10 +18,14 @@ module.exports = {
         res.redirect("/products")
       })
       .catch(err => console.log(err));
-  }
+  },
 
-  // getProductById: (req, res) => {
-  //   const id = req.params.id;
-  //   res.send(`Product with id ${id}`);
-  // },
+  getProductById: (req, res) => {
+    const id = req.params.id;
+    Product.findById(id)
+      .then(result=>{
+        res.render("viewProduct", {title: "Product details", product: result})
+      })
+      .catch(err => console.log(err));
+  },
 };

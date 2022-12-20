@@ -12,6 +12,7 @@
       <% products.forEach(product=>{ %>
           <h2><%= product.name %></h2>
           <h4><%= product.model %></h4>
+          <a href="./products/<%= product._id %>">See Product's details</a>
           <hr>
           <br>
       <%}) %>

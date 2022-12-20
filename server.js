@@ -6,8 +6,8 @@ const homeRoutes = require("./routes/homeRoutes");
 const newsletterRoutes = require("./routes/newsletterRoutes");
 const productsRoutes = require("./routes/productsRoutes");
 const PORT = 8000;
-
-const dbURI = "mongodb+srv://arditi:arditi123@cluster0.mbci6a4.mongodb.net/?retryWrites=true&w=majority";
+// Copy the DBUri from your mongodb account and paste it down here
+const dbURI = "mongodb+srv://@node-project.f915wjt.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI)
   .then(result => app.listen(PORT, () => {

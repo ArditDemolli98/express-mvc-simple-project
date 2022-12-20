@@ -5,15 +5,14 @@
 <body>
   <div class="container">
     <%- include("./partials/navbar.ejs") %>
-    <h2><%=product.name%></h2>
-    <h4><%=product.model%></h4>
-    <hr>
-    <p><%=product.description%></p>
-    <span><%=product.price%></span>
-    <hr>
+
+    emails.forEach(email =>{
+        <p>email.email</p>
+    })
+    
     <%- include("./partials/buttons.ejs") %>
   </div>
-  <script src="../js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
